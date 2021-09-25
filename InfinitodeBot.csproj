@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="LICENSE" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="SharpAdbClient" Version="2.3.23" />
   </ItemGroup>
 

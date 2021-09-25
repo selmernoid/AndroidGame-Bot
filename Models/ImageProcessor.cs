@@ -17,26 +17,16 @@ namespace ConsoleApp1
             width = bitmap.Width;
             height = bitmap.Height;
             Pixels = ImageToColorMatrix(bitmap);
-            
-            //new Color[width][];
-            //
-            //for (int x = 0; x < width; x++)
-            //{
-            //    Pixels[x] = new Color[height];
-            //    for (int y = 0; y < height; y++)
-            //    {
-            //        Pixels[x][y] = bitmap.GetPixel(x, y);
-            //    }
-            //}
         }
 
         static object lockObj = new object();
         public Point FindPosition(Image original, Point? minPoint = null, Point? maxPoint = null) => GetBestPosition(original, minPoint, maxPoint).Value;
         public Point? TryFindPosition(Image original, Point? minPoint = null, Point? maxPoint = null, decimal tolerancePercent = 1) => GetBestPosition(original, minPoint, maxPoint, Decimal.ToInt32(width * height * 255 * tolerancePercent / 100));
+        
         protected Point? GetBestPosition(Image original, Point? minPoint = null, Point? maxPoint = null, int tolerance = int.MaxValue)
-            {
+        {
 
-                using var bmp = new Bitmap(original);
+            using var bmp = new Bitmap(original);
             var originalPixels = ImageToColorMatrix(bmp);
 
             Point? pos = null;
@@ -97,20 +87,6 @@ namespace ConsoleApp1
             }
             return diff;
         }
-        protected bool IsMatch(Bitmap bmp, int x_, int y_)
-        {
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    Pixel pxl = new Pixel(bmp.GetPixel(x + x_, y + y_));
-                    Pixel pxl2 = Pixels[x][y];
-                    if (pxl != pxl2)
-                        return false;
-                }
-            }
-            return true;
-        }
 
         public static Pixel[][] ImageToColorMatrix(Bitmap bmp)
         {
@@ -137,8 +113,8 @@ namespace ConsoleApp1
             }
             public int GetDifference(Pixel other) => Math.Abs(Value - other.Value);
 
-            public static bool operator == (Pixel one, Pixel two) => one.Value == two.Value;
-            public static bool operator != (Pixel one, Pixel two) => !(one == two);
+            public static bool operator ==(Pixel one, Pixel two) => one.Value == two.Value;
+            public static bool operator !=(Pixel one, Pixel two) => !(one == two);
         }
     }
 }
