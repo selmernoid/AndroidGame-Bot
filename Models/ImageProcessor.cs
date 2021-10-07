@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace InfinitodeBot
 {
     public class ImageProcessor
     {
