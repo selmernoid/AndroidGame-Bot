@@ -1,13 +1,6 @@
-﻿using SharpAdbClient;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace InfinitodeBot.Models
 {
@@ -22,8 +15,8 @@ namespace InfinitodeBot.Models
         public static ReadOnlyCollection<string> TileResearch_Letters = new ReadOnlyCollection<string>(new List<string> { "a", "d", "x", "z" });
 
         const int TILESIZE_MIN = 27;
-        static int[] BAG_TILE_X = new int[6] { 470, 600, 730, 860, 990, 1120 };
-        static int[] BAG_TILE_Y = new int[4] { 260, 400, 540, 680 };
+        public static int[] BAG_TILE_X = new int[6] { 470, 600, 730, 860, 990, 1120 };
+        public static int[] BAG_TILE_Y = new int[4] { 260, 400, 540, 680 };
 
 
 
